@@ -1,6 +1,7 @@
 #include "main.h"
 #include <stdarg.h>
 #include <unistd.h>
+#include <stddef.h>
 
 /**
  * _printf - standard formatted output (behaves like printf from stdio)
@@ -13,7 +14,10 @@
 
 int _printf(const char *format, ...)
 {
+
 	int count = 0;
+    
+    va_list args;
 
 	specifier_t specifiers[] = {
 		{'c', print_char},
@@ -22,7 +26,9 @@ int _printf(const char *format, ...)
 		{'i', print_int},
 	};
 
-	va_list args;
+    if (format == NULL)
+		return (-1);
+	
 
 	va_start(args, format);
 	count = format_parser(format, specifiers, args);
