@@ -3,7 +3,6 @@
 #include <unistd.h>
 #include <stdarg.h>
 #include <stdlib.h>
-#include <stddef.h>
 
 /*
  * print_char: prints a single character to stdout
@@ -15,13 +14,9 @@
  */
 void print_char(va_list arg, int *count)
 {  
-    char c = va_arg(arg, char);
-    
-
-        write(1, &c, 1);
-        (*count)++;
-        return 0;
-    
+    char c = va_arg(arg, int);
+    write(1, &c, 1);
+    (*count)++;
 }
 
 /*
