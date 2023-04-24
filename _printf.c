@@ -1,38 +1,30 @@
 #include "main.h"
-#include <stdarg.h>
-#include <unistd.h>
-#include <stddef.h>
 
 /**
- * _printf - standard formatted output (behaves like printf from stdio)
- *
- * @format: the string to be printed containing specifiers
- * @... : arguments to be printed
- *
- * Return: number of characters printed
+ * _printf - Receives the main string and all the necessary parameters to
+ * print a formated string
+ * @format: A string containing all the desired characters
+ * Return: A total count of the characters printed
  */
-
 int _printf(const char *format, ...)
 {
+	int printed_chars;
+	conver_t f_list[] = {
+		{"c", print_char},
+		{"s", print_string},
+		{"%", print_percent},
+		{"d", print_integer},
+		{"i", print_integer},
+		{NULL, NULL}
+	};
+	va_list arg_list;
 
-int count = 0;
+	if (format == NULL)
+		return (-1);
 
-va_list args;
-
-specifier_t specifiers[] = {
-{'c', print_char},
-{'s', print_string},
-{'d', print_int},
-{'i', print_int},
-};
-
-if (format == NULL)
-{
-return (-1);
-}
-
-va_start(args, format);
-count = format_parser(format, specifiers, args);
-va_end(args);
-return (count);
+	va_start(arg_list, format);
+	/*Calling parser function*/
+	printed_chars = parser(format, f_list, arg_list);
+	va_end(arg_list);
+	return (printed_chars);
 }

@@ -1,29 +1,31 @@
 #ifndef MAIN_H
 #define MAIN_H
+
+#include <unistd.h>
+#include <stdlib.h>
 #include <stdarg.h>
-#define UNUSED(x) (void)(x)
 
-/*struct to link funcs*/
+/**
+* struct convert - defines a structure for symbols and functions
+*
+* @sym: The operator
+* @f: The function associated
+*/
+struct convert
+{
+	char *sym;
+	int (*f)(va_list);
+};
+typedef struct convert conver_t;
 
-typedef struct specifier {
-    char spec;
-    void (*func)(va_list args, int *count);
-} specifier_t;
-
-/*main function*/
-
+/*Main functions*/
+int parser(const char *format, conver_t f_list[], va_list arg_list);
 int _printf(const char *format, ...);
-int format_parser(const char* format, specifier_t specifiers[], va_list args);
-
-/*output using the write syscall*/
-
-void print_char(va_list arg, int *count);
-void print_string(va_list arg, int *count);
-void print_int(va_list arg, int* count);
-void print_perc(va_list arg, int *count);
-
-/*conversion functions*/
-
-char* int_to_str(int num);
+int _write_char(char);
+int print_char(va_list);
+int print_string(va_list);
+int print_percent(va_list);
+int print_integer(va_list);
+int print_number(va_list);
 
 #endif
