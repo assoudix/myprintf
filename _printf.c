@@ -15,20 +15,24 @@
 int _printf(const char *format, ...)
 {
 
-	int count = 0;
-    
-    va_list args;
+int count = 0;
 
-	specifier_t specifiers[] = {
-		{'c', print_char},
-		{'s', print_string},
-		{'d', print_int},
-		{'i', print_int},
-	};
+va_list args;
 
+specifier_t specifiers[] = {
+{'c', print_char},
+{'s', print_string},
+{'d', print_int},
+{'i', print_int},
+};
 
-	va_start(args, format);
-	count = format_parser(format, specifiers, args);
-	va_end(args);
-	return (count);
+if (format == NULL)
+{
+return (-1);
+}
+
+va_start(args, format);
+count = format_parser(format, specifiers, args);
+va_end(args);
+return (count);
 }
