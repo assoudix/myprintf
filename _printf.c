@@ -26,9 +26,6 @@ int _printf(const char *format, ...)
 		{'i', print_int},
 	};
 
-    if (format == NULL)
-		return (-1);
-	
 
 	va_start(args, format);
 	count = format_parser(format, specifiers, args);
