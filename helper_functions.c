@@ -15,15 +15,13 @@
  */
 void print_char(va_list arg, int *count)
 {  
-char *c_ptr = va_arg(arg, char *);
-    if (c_ptr == NULL) {
-        return -1;
-    } else {
-        char c = *c_ptr;
+    char c = va_arg(arg, char);
+    
+
         write(1, &c, 1);
         (*count)++;
         return 0;
-    }
+    
 }
 
 /*
