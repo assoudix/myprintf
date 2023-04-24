@@ -7,33 +7,32 @@
  */
 int print_number(va_list args)
 {
-    int n = va_arg(args, int);
-    int len = 0;
+	int n;
+	int div;
+	int len;
+	unsigned int num;
 
-    if (n < 0) {
-        _putchar('-');
-        n = -n;
-        len++;
-    }
+	n  = va_arg(args, int);
+	div = 1;
+	len = 0;
 
-    if (n / 10)
-        len += print_number_helper(n / 10);
+	if (n < 0)
+	{
+		len += _putchar('-');
+		num = n * -1;
+	}
+	else
+		num = n;
 
-    _putchar(n % 10 + '0');
-    len++;
+	for (; num / div > 9; )
+		div *= 10;
 
-    return len;
-}
+	for (; div != 0; )
+	{
+		len += _putchar('0' + num / div);
+		num %= div;
+		div /= 10;
+	}
 
-int print_number_helper(int n)
-{
-    int len = 0;
-
-    if (n / 10)
-        len += print_number_helper(n / 10);
-
-    _putchar(n % 10 + '0');
-    len++;
-
-    return len;
+	return (len);
 }
