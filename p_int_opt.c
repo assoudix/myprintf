@@ -1,5 +1,11 @@
-#include <stdio.h>
 #include <stdarg.h>
+#include "main.h"
+
+/**
+ * print_number - prints a using recursion
+ * @args: List of arguments
+ * Return: The number of arguments printed
+ */
 
 int print_number(va_list args) {
     int n = va_arg(args, int);
