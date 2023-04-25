@@ -6,10 +6,10 @@
 #include <stdarg.h>
 
 /**
-* struct convert - defines a structure for symbols and functions
+* struct linker - a table linking subroutines to specifiers
 *
-* @sym: The operator
-* @f: The function associated
+* @specifier: The specifiers
+* @f: The corresponding subroutine
 */
 struct linker
 {
@@ -18,15 +18,22 @@ struct linker
 };
 typedef struct linker f_to_c;
 
-/*Main functions*/
+
+/*_printf subroutines*/
 int parser(const char *format, f_to_c functions[], va_list arguments);
 int _printf(const char *format, ...);
+
+/*prints a single character*/
 int _putchar(char);
+
+/*prints a number & converts it to str*/
+int print_number(va_list);
+
+/*printing linker functions*/
 int print_char(va_list);
 int print_string(va_list);
 int print_percent(va_list);
 int print_integer(va_list);
-int print_number(va_list);
-int print_number_helper(int n);
+
 
 #endif

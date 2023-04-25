@@ -1,8 +1,9 @@
 #include "main.h"
+
 /**
- * print_char - Prints character
+ * print_char - Prints a single character but uses va_list as input
  * @list: list of arguments
- * Return: Will return the amount of characters printed.
+ * Return: 1
  */
 int print_char(va_list list)
 {
@@ -11,9 +12,9 @@ int print_char(va_list list)
 }
 
 /**
- * print_string - Prints a string
+ * print_string - Prints a string but uses va_list as input
  * @list: list of arguments
- * Return: Will return the amount of characters printed.
+ * Return: # of printed characters
  */
 int print_string(va_list list)
 {
@@ -30,8 +31,8 @@ int print_string(va_list list)
 
 /**
  * print_percent - Prints a percent symbol
- * @list: list of arguments
- * Return: Will return the amount of characters printed.
+ * @list: list of arguments (UNUSED)
+ * Return: 1
  */
 int print_percent(__attribute__((unused))va_list list)
 {
@@ -40,9 +41,9 @@ int print_percent(__attribute__((unused))va_list list)
 }
 
 /**
- * print_integer - Prints an integer
+ * print_integer - Prints an integer but uses va_list as input
  * @list: list of arguments
- * Return: Will return the amount of characters printed.
+ * Return: length of the integer
  */
 int print_integer(va_list list)
 {
@@ -50,16 +51,4 @@ int print_integer(va_list list)
 
 	num_length = print_number(list);
 	return (num_length);
-}
-
-/**
- * write_base - sends characters to be written on standard output
- * @str: String to parse
- */
-void _puts(char *str)
-{
-	int i;
-
-	for (i = 0; str[i] != '\0'; i++)
-		_putchar(str[i]);
 }

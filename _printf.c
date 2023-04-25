@@ -1,11 +1,17 @@
 #include "main.h"
 
 /**
- * _printf - Receives the main string and all the necessary parameters to
- * print a formated string
- * @format: A string containing all the desired characters
- * Return: A total count of the characters printed
+ * _printf - mimics printf from stdio
+ * so far it supports the following specifiers:
+ * c, s, %, d, and i
+ * coded by Omar Assoudi and Omar El Ouali
+ * Special thanks to my dear friend and colleague :)
+ *
+ * @format: A string containing all the characters and specifiers
+ * Return: number of printed characters
  */
+
+
 int _printf(const char *format, ...)
 {
 	int count;
@@ -17,15 +23,14 @@ int _printf(const char *format, ...)
 		{"i", print_integer},
 		{NULL, NULL}
 	};
+
 	va_list arguments;
 
 	if (format == NULL)
 		return (-1);
 
 	va_start(arguments, format);
-	
-
-	count = parser(format, functions, arguments);
+		count = parser(format, functions, arguments);
 	va_end(arguments);
 	return (count);
-}
+	}

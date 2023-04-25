@@ -1,38 +1,39 @@
 #include "main.h"
 
 /**
- * print_number - prints a number send to this function
+ * print_number - prints a number in base 10
+ * uses va_list as input
  * @args: List of arguments
- * Return: The number of arguments printed
+ * Return: length of the number
  */
 int print_number(va_list args)
 {
 	int n;
-	int div;
-	int len;
+	int divider;
+	int length;
 	unsigned int num;
 
 	n  = va_arg(args, int);
-	div = 1;
-	len = 0;
+	divider = 1;
+	length = 0;
 
 	if (n < 0)
 	{
-		len += _putchar('-');
+		length += _putchar('-');
 		num = n * -1;
 	}
 	else
 		num = n;
 
-	while (num / div > 9)
-		div *= 10;
+	while (num / divider > 9)
+		divider *= 10;
 
-	while ( div != 0 )
+	while (divider != 0)
 	{
-		len += _putchar('0' + num / div);
-		num %= div;
-		div /= 10;
+		length += _putchar('0' + num / divider);
+		num %= divider;
+		divider /= 10;
 	}
 
-	return (len);
+	return (length);
 }
