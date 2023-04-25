@@ -28,7 +28,7 @@ int parser(const char *format, f_to_c functions[], va_list arguments)
 					break;
 				}
 			}
-			if (functions[iterfunc].specifier == NULL && format[iterfor + 1] != ' ')
+			if (functions[iterfunc].specifier == NULL)
 			{
 				if (format[iterfor + 1] != '\0')
 				{
