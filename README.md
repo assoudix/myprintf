@@ -1,4 +1,4 @@
-# printf
+# myprintf
 This is the Holberton repository for the printf project, its purpose is to contain the final files the checker is run on.
 
 _printf is supposed to be a 1:1 copy of printf from stdio, so far, this is not the case. Currently the function supports the following specifiers:
