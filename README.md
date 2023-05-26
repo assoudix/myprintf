@@ -11,4 +11,4 @@ _printf is supposed to be a 1:1 copy of printf from stdio, so far, this is not t
 %other specifier: prints a copy of the specifier.
 
 Otherwise, it should behave exactly as printf.
-This was coded by Omar Assoudi and Omar El Ouali.
+This was coded by assoudix and MiltoniaSpectabilis.
